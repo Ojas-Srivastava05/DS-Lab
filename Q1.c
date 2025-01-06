@@ -25,7 +25,7 @@ void main()
     }
     printf("\n THE MAXIMUM ELEMENT INDEX NUMBER IS %d",maxi);
     int flag=1;
-    while(ll<ul)
+    while(ll<ul)//BINARY SEARCH HAS TIME COMPLEXITY OF O(log(nś))
     {
         mid=(ll+ul)/2;
         if(mid==maxi)
