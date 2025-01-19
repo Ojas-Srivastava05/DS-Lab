@@ -13,7 +13,7 @@ int main()
     int arr2[n1];
     ques.ptr1=&arr1[0];
     ques.ptr2=&arr2[0];
-    printf("ENTER THE ELEMENTS OF ARRAY 1");
+    printf("ENTER THE ELEMENTS OF ARRAY ");
     for(int i=0;i<n1;i++)
     {
         scanf("%d",ques.ptr1+i);
