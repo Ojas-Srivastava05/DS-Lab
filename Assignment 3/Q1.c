@@ -4,14 +4,6 @@ struct Node{
     int data;
     struct Node*next;
 };
-void DisplayNode(struct Node *ptr,int value)
-{
-    while(ptr!=NULL)
-    {
-        printf("%d \n",ptr->data);
-        ptr=ptr->next;
-    }
-}
 int main()
 {
     struct Node*first=(struct Node*)malloc(sizeof(struct Node));
@@ -23,6 +15,10 @@ int main()
     second->next=third;
     third->data=30;
     third->next=NULL;
-    DisplayNode(first,first->data);
-
+    struct Node *ptr=first;
+    while(ptr!=NULL)
+    {
+        printf("%d \n",ptr->data);
+        ptr=ptr->next;
+    }
 }

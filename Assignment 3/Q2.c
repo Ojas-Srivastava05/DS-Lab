@@ -4,9 +4,20 @@ struct Node{
     int data;
     struct Node*next;
 };
-int InsertNodeAtBeginning(struct Node*ptr)
+int printNode(struct Node*ptr)
 {
-    
+    while(ptr!=NULL)
+    {
+        printf("%d \n",ptr->data);
+        ptr=ptr->next;
+    }
+}
+int InsertNodeAtBeginning(struct Node *head,int data)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(int));
+    ptr->next=head;
+    ptr->data=data;
+    return ptr;
 }
 int main()
 {
@@ -19,5 +30,8 @@ int main()
     second->next=third;
     third->data=30;
     third->next=NULL;
-    InsertNodeAtBeginning(first);
+
+    first=InsertNodeAtBeginning(first,69);
+    printNode(first);
+    
 }
