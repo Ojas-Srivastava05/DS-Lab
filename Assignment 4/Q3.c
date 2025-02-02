@@ -2,49 +2,40 @@
 #include<stdlib.h>
 struct Node{
     int data;
-    struct Node *next;
+    struct Node*next;
 };
-int loopcheck(*ptr)
+struct Node* createNode(int data)
 {
-    
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
+    newNode->data=data;
+    newNode->next=NULL;
+    return newNode;
 }
-void main()
+int hasCycle(struct Node*head)
 {
-    int arr[10];
-    printf("Enter the elements of the array ");
-    for(int i=0;i<10;i++)
+    struct Node* slow=head;
+    struct Node* fast=head;
+
+    while(fast != NULL && fast->next != NULL)
     {
-        scanf("%d",&arr[i]);
+        slow=slow->next;//1 step shift
+        fast=fast->next->next;//2 step shift
+
+        if(slow==fast)
+        {
+            return 1;
+        }
     }
-    struct Node *head=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *first=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *second=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *third=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *fourth=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *fifth=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *sixth=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *seventh=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *eighth=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *ninth=(struct Node*)malloc(sizeof(struct Node));
-    head->data=arr[0];
-    head->next=first;
-    first->data=arr[1];
-    first->next=second;
-    second->data=arr[2];
-    second->next=third;
-    third->data=arr[3];
-    third->next=fourth;
-    fourth->data=arr[4];
-    fourth->next=fifth;
-    fifth->data=arr[5];
-    fifth->next=sixth;
-    sixth->data=arr[6];
-    sixth->next=seventh;
-    seventh->data=arr[7];
-    seventh->next=eighth;
-    eighth->data=arr[8];
-    eighth->next=ninth;
-    ninth->data=arr[9];
-    ninth->next=NULL;
-    loopcheck(head);
+    return 0;
+}
+int main()
+{
+    struct Node*head=createNode(10);
+    head->next=createNode(20);
+    head->next->next=createNode(30);
+    head->next->next->next=createNode(40);
+    printf("Loop detected : %d\n",hasCycle(head));
+    head->next->next->next=head->next->next;//khud se ek loop bana rha hun check karne ke lie
+    printf("Loop detected : %d\n",hasCycle(head));
+
 }
