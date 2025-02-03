@@ -1,57 +1,76 @@
-//removal of duplicates
-#include<stdlib.h>
-#include<stdio.h>
-struct Node{
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
     int data;
     struct Node* next;
 };
-int duplicate(struct Node* ptr,struct Node* ptr1)
-{
-    for(int i=0;i<8;i++)
-    {
-       
-        for(int j=i+1;j<8;j++)
-        {
-            ptr1=ptr1->next;
-            if(ptr->data==ptr1->data)
-            {
-                ptr=ptr->next;
-            }
-            else
-            {
-                printf("%d \n",ptr->data);
-                ptr=ptr->next;
+
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void printList(struct Node* head) {
+    struct Node* current = head;
+    while (current != NULL) {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
+}
+
+
+void removeDuplicates(struct Node* head) {
+    struct Node *current = head, *runner, *prev;
+
+    while (current != NULL) {
+        prev = current;
+        runner = current->next;
+
+        while (runner != NULL) {
+            if (runner->data == current->data) {
+                
+                prev->next = runner->next;
+                free(runner);
+                runner = prev->next;  
+            } else {
+                prev = runner;
+                runner = runner->next;
             }
         }
-        ptr = ptr->next;
+        current = current->next;
     }
 }
-void main()
-{
-    struct Node *head=(struct Node*)malloc(sizeof(struct Node));
-    struct Node *first = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *second = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *third = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *fourth = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *fifth = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *sixth = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *seventh = (struct Node *)malloc(sizeof(struct Node));
-    head->data=10;
-    head->next=first;
-    first->data=20;
-    first->next=second;
-    second->data=30;
-    second->next=third;
-    third->data=40;
-    third->next=fourth;
-    fourth->data=50;
-    fourth->next=fifth;
-    fifth->data=60;
-    fifth->next=sixth;
-    sixth->data=60;
-    sixth->next=seventh;
-    seventh->data=30;
-    seventh->next=NULL;
 
-    duplicate(head,first);
+
+int main() {
+   
+    struct Node* head = createNode(10);
+    head->next = createNode(20);
+    head->next->next = createNode(10);
+    head->next->next->next = createNode(30);
+    head->next->next->next->next = createNode(20);
+
+    printf("Original linked list:\n");
+    printList(head);
+
+    removeDuplicates(head);
+
+    printf("Linked list after removing duplicates:\n");
+    printList(head);
+
+    
+    struct Node* current = head;
+    while (current != NULL) {
+        struct Node* next = current->next;
+        free(current);
+        current = next;
+    }
+
+    return 0;
 }
