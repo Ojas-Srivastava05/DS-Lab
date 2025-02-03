@@ -20,7 +20,7 @@ int rotation(struct Node* ptr,int k)
 void main()
 {
     int k;
-    printf("Enter the value you want to rotate the array by keep in mind that k<10");
+    printf("Enter the value you want to rotate the array by");
     scanf("%d",&k);
     struct Node *head = (struct Node *)malloc(sizeof(struct Node));
     struct Node *first=(struct Node*)malloc(sizeof(struct Node));
