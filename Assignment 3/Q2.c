@@ -31,7 +31,7 @@ int main()
     third->data=30;
     third->next=NULL;
 
-    first=InsertNodeAtBeginning(first,69);
+    first=InsertNodeAtBeginning(first,90);
     printNode(first);
     
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+//remove duplicate1
 struct Node {
     int data;
     struct Node* next;
