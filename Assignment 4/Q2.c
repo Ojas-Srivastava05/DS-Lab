@@ -1,3 +1,4 @@
+//removal of duplicates
 #include<stdlib.h>
 #include<stdio.h>
 struct Node{
