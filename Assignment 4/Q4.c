@@ -94,8 +94,7 @@ void display(struct Node* node) {
         last = node;
         node = node->next;
         if (node != NULL) {
-            prin
-            tf(" <-> ");
+            printf(" <-> ");
         }
     }
     printf("\n");

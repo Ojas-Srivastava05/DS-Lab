@@ -14,16 +14,13 @@ void create(STACK *s) {
     s->top = -1;
 }
 
-
 bool isFull(STACK *s) {
     return s->top == MAXSIZE - 1;
 }
 
-
 bool isEmpty(STACK *s) {
     return s->top == -1;
 }
-
 
 void push(STACK *s, int value) {
     if (isFull(s)) {
@@ -33,7 +30,6 @@ void push(STACK *s, int value) {
     s->stArr[++(s->top)] = value;
     printf("Pushed %d onto the stack.\n", value);
 }
-
 
 int pop(STACK *s) {
     if (isEmpty(s)) {
@@ -45,7 +41,6 @@ int pop(STACK *s) {
     return value;
 }
 
-
 int peek(STACK *s) {
     if (isEmpty(s)) {
         printf("Stack is empty! No top element.\n");
@@ -53,7 +48,6 @@ int peek(STACK *s) {
     }
     return s->stArr[s->top];
 }
-
 
 int main() {
     STACK s;
