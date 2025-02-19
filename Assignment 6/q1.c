@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
+#include<ctype.h>
 #include <string.h>
 
 #define MAX 100
@@ -29,9 +29,14 @@ char peek() {
 }
 
 int precedence(char c) {
-    if (c == '+' || c == '-') return 1;
+    if (c == '^') return 3;
     if (c == '*' || c == '/') return 2;
+    if (c == '+' || c == '-') return 1;
     return 0;
+}
+
+int isRightAssociative(char c) {
+    return c == '^';
 }
 
 void infixToPostfix(char *infix, char *postfix) {
@@ -47,8 +52,13 @@ void infixToPostfix(char *infix, char *postfix) {
             }
             pop();
         } else {
-            while (top != -1 && precedence(peek()) >= precedence(infix[i])) {
+            while (top != -1 && precedence(peek()) > precedence(infix[i])) {
                 postfix[j++] = pop();
+            }
+            if (!isRightAssociative(infix[i])) {
+                while (top != -1 && precedence(peek()) >= precedence(infix[i])) {
+                    postfix[j++] = pop();
+                }
             }
             push(infix[i]);
         }
