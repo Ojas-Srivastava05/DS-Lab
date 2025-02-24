@@ -28,7 +28,7 @@ int evaluatePostfix(char *expr) {
     char ch;
     
     while (expr[i] != '\0') {
-        while (expr[i] == ' ') i++;  // Skip spaces
+        while (expr[i] == ' ') i++;  // spaces hatane ke lie 
         
         if (isdigit(expr[i]) || (expr[i] == '-' && isdigit(expr[i + 1]))) {
             num = 0;
