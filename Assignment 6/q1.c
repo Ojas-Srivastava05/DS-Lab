@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<ctype.h>
+#include <ctype.h>
 #include <string.h>
 
 #define MAX 100
@@ -39,6 +39,21 @@ int isRightAssociative(char c) {
     return c == '^';
 }
 
+int isValidParentheses(char *expr) {
+    char tempStack[MAX];
+    int tempTop = -1;
+    
+    for (int i = 0; expr[i] != '\0'; i++) {
+        if (expr[i] == '(') {
+            tempStack[++tempTop] = '(';
+        } else if (expr[i] == ')') {
+            if (tempTop == -1) return 0;
+            tempTop--;
+        }
+    }
+    return tempTop == -1;
+}
+
 void infixToPostfix(char *infix, char *postfix) {
     int i, j = 0;
     for (i = 0; infix[i] != '\0'; i++) {
@@ -71,9 +86,17 @@ void infixToPostfix(char *infix, char *postfix) {
 
 int main() {
     char infix[MAX], postfix[MAX];
+    
     printf("Enter infix expression: ");
     scanf("%s", infix);
+
+    if (!isValidParentheses(infix)) {
+        printf("Error: Invalid parentheses!\n");
+        return 1;
+    }
+
     infixToPostfix(infix, postfix);
     printf("Postfix expression: %s\n", postfix);
+    
     return 0;
 }
