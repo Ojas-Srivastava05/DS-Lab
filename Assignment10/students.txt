@@ -1,0 +1,10 @@
+Alice,101,AI
+Bob,102,CSE
+Charlie,103,EE
+David,104,ME
+Eve,105,AI
+Frank,106,CSE
+Grace,107,EE
+Hannah,108,ME
+Isaac,109,AI
+Jack,110,CSE
