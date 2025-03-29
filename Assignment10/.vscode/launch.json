@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/ojas/Desktop/-_-/DS Lab/Assignment10",
+      "program": "/Users/ojas/Desktop/-_-/DS Lab/Assignment10/build/Debug/outDebug"
+    }
+  ]
+}
