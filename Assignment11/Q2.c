@@ -4,14 +4,14 @@
 void countingSort(int arr[], int n) {
     int max = arr[0];
     
-    // Find the maximum element
+    // maximum element dhund rha hun
     for (int i = 1; i < n; i++) {
         if (arr[i] > max) {
             max = arr[i];
         }
     }
 
-    // Create and initialize the count array
+    // count array banake usko initialize kar rha hun yha par mei malloc bhi use kar sakta tha
     int *count = (int *)calloc(max + 1, sizeof(int));
 
     // Count occurrences of each element
@@ -19,7 +19,7 @@ void countingSort(int arr[], int n) {
         count[arr[i]]++;
     }
 
-    // Reconstruct the sorted array
+    // waapas sorted array ko banaya
     int index = 0;
     for (int i = 0; i <= max; i++) {
         while (count[i] > 0) {
